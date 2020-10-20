@@ -41,7 +41,6 @@ Things you may want to cover:
 ### Association 
 
 - has_many :items
-- belongs_to :destination
 - belongs_to :buyer_info
 
 
@@ -62,7 +61,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- belongs_to :buyer_info
+- has_one :buyer_info
 - belongs_to_active_hash :shipping_info
 - belongs_to_active_hash :detail_item
 
@@ -71,18 +70,17 @@ Things you may want to cover:
 
 | Column        | Type       | Options           |
 | ------------- | ---------- | ----------------- |
-| post_code     | integer    | null: false       |  
+| post_code     | string     | null: false       |  
 | city          | string     | null: false       |
 | address       | string     | null: false       |
 | building      | string     |                   |
-| telephone     | integer    | null: false       |
+| telephone     | string     | null: false       |
 | buyer_info_id | integer    | foreign_key: true |
 | prefecture_id | integer    | null: false       |
 
 ### Association
 
-- has_one :buyer_info
-- belongs_to :user
+- belongs_to :buyer_info
 - belongs_to_active_hash :select_prefecture
 
 
@@ -95,7 +93,7 @@ Things you may want to cover:
 
 ### Association 
 
-- belongs_to :destination
+- has_one :destination
 - belongs_to :user
 - belongs_to :item
 
