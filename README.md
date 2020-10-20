@@ -54,7 +54,7 @@ Things you may want to cover:
 | user_id         | integer    | foreign_key: true |
 | category_id     | integer    | null: false       |
 | item_status_id  | integer    | null: false       |
-| fee-shipping_id | integer    | null: false       |
+| fee_shipping_id | integer    | null: false       |
 | region_id       | integer    | null: false       |
 | days_to_ship_id | integer    | null: false       |
 
