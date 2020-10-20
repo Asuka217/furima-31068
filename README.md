@@ -22,3 +22,71 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# テーブル設計
+
+## users テーブル
+
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| first_name      | string | null: false |
+| last_name       | string | null: false |
+| first_name_kane | string | null: false |
+| last_name_kana  | string | null: false | 
+| birthday        | string | null: false |
+
+### Association 
+
+- has_many :items
+- belongs_to :destinations
+- belongs_to :buyer_infos
+
+
+## items テーブル
+
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| title       | string     | null: false       |
+| explication | text       | null: false       |
+| price       | integer    | null: false       |
+| user_id     | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :destination
+- belongs_to :buyer_info
+
+## destinations テーブル
+
+| Column    | Type       | Options           |
+| --------- | ---------- | ----------------- |
+| post_code | integer    | null: false       |
+| city      | string     | null: false       |
+| address   | string     | null: false       |
+| building  | string     |                   |
+| telephone | integer    | null: false       |
+| user_id   | references | foreign_key: true |
+| item_id   | references | foreign_key: true |
+
+### Association
+
+- belongs_to :buyer_info
+- has_one :item
+
+## buyer_infos テーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| buyer_id    | references | null: false, foreign_key: true |
+| item_id     | references | null: false, foreign_key: true |
+
+### Association 
+
+- belongs_to :destination
+- has_one :item
+
+
