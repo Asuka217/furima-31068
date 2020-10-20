@@ -41,7 +41,7 @@ Things you may want to cover:
 ### Association 
 
 - has_many :items
-- belongs_to :buyer_info
+- has_many :buyer_infos
 
 
 ## items テーブル
