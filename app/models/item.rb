@@ -2,15 +2,17 @@ class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
 
-  validates :image,        presence: true
-  validates :title,        presence: true
-  validates :explication,  presence: true
-  validates :price,        presence: true, numericality: { greater_than: 300, less_than: 9_999_999 }
-  validates :category,     presence: true
-  validates :item_status,  presence: true
-  validates :fee_shipping, presence: true
-  validates :region,       presence: true
-  validates :days_to_ship, presence: true
+  with_options presence: true do
+    validates :image
+    validates :title
+    validates :explication
+    validates :category
+    validates :item_status
+    validates :fee_shipping
+    validates :region
+    validates :days_to_ship
+    validates :price, numericality: { greater_than: 299, less_than: 10_000_000 }
+  end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
@@ -19,9 +21,11 @@ class Item < ApplicationRecord
   belongs_to_active_hash :region
   belongs_to_active_hash :days_to_ship
 
-  validates :category_id, numericality: { other_than: 1 }
-  validates :item_status_id, numericality: { other_than: 1 }
-  validates :fee_shipping_id, numericality: { other_than: 1 }
-  validates :region_id, numericality: { other_than: 1 }
-  validates :days_to_ship_id, numericality: { other_than: 1 }
+  with_options presence: true, numericality: { other_than: 1 } do
+    validates :category_id
+    validates :item_status_id
+    validates :fee_shipping_id
+    validates :region_id
+    validates :days_to_ship_id
+  end
 end

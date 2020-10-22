@@ -76,13 +76,19 @@ RSpec.describe Item, type: :model do
       it '入力した価格が、300〜9,999,999の間となっていない' do
         @item.price = 100
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be greater than 300')
+        expect(@item.errors.full_messages).to include('Price must be greater than 299')
       end
 
       it '入力した金額が半角数字になっていない' do
         @item.price = '１００'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+
+      it '入力した金額が、10,000,000以上の場合は、エラーとなる' do
+        @item.price = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price must be less than 10000000')
       end
     end
   end
