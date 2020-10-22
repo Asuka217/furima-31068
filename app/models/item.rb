@@ -1,12 +1,11 @@
 class Item < ApplicationRecord
-
   has_one_attached :image
   belongs_to :user
 
   validates :image,        presence: true
   validates :title,        presence: true
   validates :explication,  presence: true
-  validates :price,        presence: true, numericality: { greater_than: 300, less_than: 9999999 }
+  validates :price,        presence: true, numericality: { greater_than: 300, less_than: 9_999_999 }
   validates :category,     presence: true
   validates :item_status,  presence: true
   validates :fee_shipping, presence: true

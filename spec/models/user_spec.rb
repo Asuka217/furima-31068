@@ -72,7 +72,6 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
-
       it 'first_nameとlast_nameでそれぞれ入力がないと登録できない' do
         @user.first_name = '太郎'
         @user.last_name = ''
