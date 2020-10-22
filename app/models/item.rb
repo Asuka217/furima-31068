@@ -3,14 +3,14 @@ class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
 
-  validates :image, presence: true
-  validates :title, presence: true
-  validates :explication, presence: true
-  validates :price, presence: true, inclusion: { in: 300..9999999 }
-  validates :category, presence: true
-  validates :item_status, presence:true
+  validates :image,        presence: true
+  validates :title,        presence: true
+  validates :explication,  presence: true
+  validates :price,        presence: true, numericality: { greater_than: 300, less_than: 9999999 }
+  validates :category,     presence: true
+  validates :item_status,  presence: true
   validates :fee_shipping, presence: true
-  validates :region, presence: true
+  validates :region,       presence: true
   validates :days_to_ship, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
