@@ -62,8 +62,11 @@ Things you may want to cover:
 
 - belongs_to :user
 - has_one :buyer_info
-- belongs_to_active_hash :shipping_info
-- belongs_to_active_hash :detail_item
+- belongs_to_active_hash :category
+- belongs_to_active_hash :item_status
+- belongs_to_active_hash :fee_shipping
+- belongs_to_active_hash :region
+- belongs_to_active_hash :days_to_ship
 
 
 ## destinations テーブル
