@@ -1,6 +1,6 @@
 class BuyerInfo
   include ActiveModel::Model
-  attr_accessor :post_code, :region_id, :city, :address, :building, :telephone, :user_id, :item_id
+  attr_accessor :post_code, :region_id, :city, :address, :building, :telephone, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
@@ -8,6 +8,7 @@ class BuyerInfo
     validates :city
     validates :address
     validates :telephone, format: { with: /\A\d{11}\z/ }
+    validates :token
   end
 
   validates :region_id, numericality: { other_than: 1 }
