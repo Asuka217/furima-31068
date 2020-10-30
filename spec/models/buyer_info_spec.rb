@@ -11,6 +11,7 @@ RSpec.describe BuyerInfo, type: :model do
       it 'すべての情報が正しく入力されていれば保存できる' do
         expect(@buyer_info).to be_valid
       end
+
       it 'buildingが空でも保存はできる' do
         @buyer_info.building = nil
         expect(@buyer_info). to be_valid
@@ -65,6 +66,12 @@ RSpec.describe BuyerInfo, type: :model do
         @buyer_info.telephone = '080-1234-1234'
         @buyer_info.valid?
         expect(@buyer_info.errors.full_messages).to include("Telephone is invalid")
+      end
+      
+      it 'tokenが空では保存できないこと' do
+        @buyer_info.token = nil
+        @buyer_info.valid?
+        expect(@buyer_info.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
