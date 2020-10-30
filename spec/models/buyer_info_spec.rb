@@ -29,13 +29,13 @@ RSpec.describe BuyerInfo, type: :model do
       it 'post_codeにハイフンがないと保存できないこと' do
         @buyer_info.post_code = '1234567'
         @buyer_info.valid?
-        expect(@buyer_info.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@buyer_info.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
 
       it 'region_idが"---"だと保存できないこと' do
         @buyer_info.region_id = 1
         @buyer_info.valid?
-        expect(@buyer_info.errors.full_messages).to include("Region must be other than 1")
+        expect(@buyer_info.errors.full_messages).to include('Region must be other than 1')
       end
 
       it 'cityが空だと保存できないこと' do
@@ -59,13 +59,13 @@ RSpec.describe BuyerInfo, type: :model do
       it 'telephoneは11桁以内であること' do
         @buyer_info.telephone = '080123412345'
         @buyer_info.valid?
-        expect(@buyer_info.errors.full_messages).to include("Telephone is invalid")
+        expect(@buyer_info.errors.full_messages).to include('Telephone is invalid')
       end
 
       it 'telephoneはハイフン不要であること' do
         @buyer_info.telephone = '080-1234-1234'
         @buyer_info.valid?
-        expect(@buyer_info.errors.full_messages).to include("Telephone is invalid")
+        expect(@buyer_info.errors.full_messages).to include('Telephone is invalid')
       end
       
       it 'tokenが空では保存できないこと' do
