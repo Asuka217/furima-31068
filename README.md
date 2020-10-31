@@ -78,7 +78,7 @@ Things you may want to cover:
 | address       | string     | null: false       |
 | building      | string     |                   |
 | telephone     | string     | null: false       |
-| user          | references | foreign_key: true |
+| buy           | references | foreign_key: true |
 | region_id     | integer    | null: false       |
 
 ### Association
