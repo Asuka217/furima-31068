@@ -41,7 +41,7 @@ Things you may want to cover:
 ### Association 
 
 - has_many :items
-- has_many :buyer_infos
+- has_many :buy
 
 
 ## items テーブル
@@ -61,7 +61,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one :buyer_info
+- has_one :buy
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
 - belongs_to_active_hash :fee_shipping
@@ -78,21 +78,21 @@ Things you may want to cover:
 | address       | string     | null: false       |
 | building      | string     |                   |
 | telephone     | string     | null: false       |
-| buyer_info_id | integer    | foreign_key: true |
-| prefecture_id | integer    | null: false       |
+| user          | references | foreign_key: true |
+| region_id     | integer    | null: false       |
 
 ### Association
 
-- belongs_to :buyer_info
+- belongs_to :buy
 - belongs_to_active_hash :select_prefecture
 
 
-## buyer_infos テーブル
+## buys テーブル
 
-| Column      | Type    | Options           |
-| ----------- | ------- | ----------------- |
-| user_id     | integer | foreign_key: true |
-| item_id     | integer | foreign_key: true |
+| Column   | Type       | Options           |
+| -------- | ---------- | ----------------- |
+| user     | references | foreign_key: true |
+| item     | references | foreign_key: true |
 
 ### Association 
 
