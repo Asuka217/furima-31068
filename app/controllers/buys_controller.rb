@@ -38,10 +38,8 @@ class BuysController < ApplicationController
   end
 
   def move_to_index
-    user = User.select([:id])
-    buy = Buy.select([:id])
-    item = Item.find(params[:item_id])
-    if current_user.id == item.user_id || item.buy.present?
+    @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id || @item.buy
       redirect_to root_path
     end
   end
