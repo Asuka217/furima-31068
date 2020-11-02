@@ -14,7 +14,7 @@ RSpec.describe BuyerInfo, type: :model do
 
       it 'buildingが空でも保存はできる' do
         @buyer_info.building = nil
-        expect(@buyer_info). to be_valid
+        expect(@buyer_info).to be_valid
       end
     end
     
